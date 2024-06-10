@@ -14,9 +14,8 @@ namespace ISTCOSA.Domain.Entities
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
-        //public int CityId { get; set; }
-        //[ForeignKey("CityId")]
-        //public City? City { get; set; }
+        public int CityId { get; set; }
+        public City? city { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set;}
         public DateTime? DeletedDate { get; set;}

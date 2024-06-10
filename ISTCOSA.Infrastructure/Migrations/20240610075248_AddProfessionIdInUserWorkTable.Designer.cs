@@ -4,6 +4,7 @@ using ISTCOSA.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ISTCOSA.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240610075248_AddProfessionIdInUserWorkTable")]
+    partial class AddProfessionIdInUserWorkTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,9 +87,6 @@ namespace ISTCOSA.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -112,8 +112,6 @@ namespace ISTCOSA.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CityId");
 
                     b.ToTable("companies");
                 });
@@ -477,20 +475,17 @@ namespace ISTCOSA.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("FromDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<int>("ProfessionId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("ToDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("UserPersonalInformationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("WorkProfile")
                         .IsRequired()
@@ -501,6 +496,8 @@ namespace ISTCOSA.Infrastructure.Migrations
                     b.HasIndex("CompanyId");
 
                     b.HasIndex("ProfessionId");
+
+                    b.HasIndex("UserPersonalInformationId");
 
                     b.ToTable("userWorks");
                 });
@@ -774,17 +771,6 @@ namespace ISTCOSA.Infrastructure.Migrations
                     b.Navigation("State");
                 });
 
-            modelBuilder.Entity("ISTCOSA.Domain.Entities.Company", b =>
-                {
-                    b.HasOne("ISTCOSA.Domain.Entities.City", "city")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("city");
-                });
-
             modelBuilder.Entity("ISTCOSA.Domain.Entities.PostEmployment", b =>
                 {
                     b.HasOne("ISTCOSA.Domain.Entities.Company", "Company")
@@ -859,9 +845,17 @@ namespace ISTCOSA.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ISTCOSA.Domain.Entities.UserPersonalInformation", "userPersonalInformation")
+                        .WithMany()
+                        .HasForeignKey("UserPersonalInformationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Company");
 
                     b.Navigation("Profession");
+
+                    b.Navigation("userPersonalInformation");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Company\Commands\" />
     <Folder Include="Industry\Commands\" />
+    <Folder Include="RegistrationComplition\Query\" />
     <Folder Include="UserProfile\Queries\" />
   </ItemGroup>
 
