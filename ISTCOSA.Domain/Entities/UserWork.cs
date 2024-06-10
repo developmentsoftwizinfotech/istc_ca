@@ -14,10 +14,12 @@ namespace ISTCOSA.Domain.Entities
         public string ContactNumber { get; set; }
         public string EmailID { get; set; }
         public string WorkProfile { get; set; }
-        public int UserPersonalInformationId { get; set; }
-
-        [ForeignKey("UserPersonalInformationId")]
-        public UserPersonalInformation? userPersonalInformation { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+        public int CompanyId { get; set; }
+        public Company? Company { get; set; }
+        public int ProfessionId { get; set; }
+        public Profession? Profession { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public DateTime? DeletedDate { get; set; }

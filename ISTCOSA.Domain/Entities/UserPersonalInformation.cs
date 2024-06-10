@@ -26,6 +26,7 @@ namespace ISTCOSA.Domain.Entities
         public string AboutYourself { get; set; }  
         public string WhatsappNumber { get; set; }
         public string MembershipType { get; set; }
+        
         public DateTime? LastLoginDate { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
