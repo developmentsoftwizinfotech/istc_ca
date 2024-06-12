@@ -1,7 +1,5 @@
-﻿using ISTCOSA.Application.Batch.Queries.GetBatches;
+﻿using ISTCOSA.Application.CommandAndQuries.Company.Queries;
 using ISTCOSA.Application.Common.DTOs;
-using ISTCOSA.Application.Company.Queries;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTCOSA.Controllers

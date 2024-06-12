@@ -1,10 +1,6 @@
-﻿using ISTCOSA.Application.Common.DTOs;
-using ISTCOSA.Application.Country.Queries;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using ISTCOSA.Application.CommandAndQuries.Country.Queries;
+using ISTCOSA.Application.Common.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace ISTCOSA.Controllers
 {

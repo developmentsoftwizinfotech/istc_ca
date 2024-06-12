@@ -1,8 +1,5 @@
-﻿using ISTCOSA.Application.Batches.Queries.GetBatchById;
-using ISTCOSA.Application.UserPersonal.Commands;
-using ISTCOSA.Application.UserPersonal.Queries;
-using ISTCOSA.Application.UserRegister.Commands.CreateUserRegister;
-using Microsoft.AspNetCore.Http;
+﻿using ISTCOSA.Application.CommandAndQuries.UserPersonal.Commands;
+using ISTCOSA.Application.CommandAndQuries.UserPersonal.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTCOSA.Controllers

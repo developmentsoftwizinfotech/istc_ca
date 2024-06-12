@@ -1,5 +1,4 @@
-﻿using ISTCOSA.Application.UserSearch;
-using Microsoft.AspNetCore.Http;
+﻿using ISTCOSA.Application.CommandAndQuries.UserSearch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTCOSA.Controllers

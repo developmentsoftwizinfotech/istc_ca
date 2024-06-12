@@ -1,6 +1,4 @@
-﻿using ISTCOSA.Application.Batches.Commands.UpdateBatch;
-using ISTCOSA.Application.UserProfile.Commands;
-using Microsoft.AspNetCore.Http;
+﻿using ISTCOSA.Application.CommandAndQuries.UserProfile.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTCOSA.Controllers

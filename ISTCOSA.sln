@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTCOSA", "ISTCOSA\ISTCOSA.csproj", "{4AC2DA93-8A0C-412F-B283-907B7F9D68C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTCOSA", "ISTCOSA\ISTCOSA.csproj", "{4AC2DA93-8A0C-412F-B283-907B7F9D68C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTCOSA.Domain", "ISTCOSA.Domain\ISTCOSA.Domain.csproj", "{7B5E2329-361A-4FC3-B04E-EE052879EC55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTCOSA.Domain", "ISTCOSA.Domain\ISTCOSA.Domain.csproj", "{7B5E2329-361A-4FC3-B04E-EE052879EC55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTCOSA.Application", "ISTCOSA.Application\ISTCOSA.Application.csproj", "{277146EA-4FE1-4B8A-9637-FA1287F3D16E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTCOSA.Application", "ISTCOSA.Application\ISTCOSA.Application.csproj", "{277146EA-4FE1-4B8A-9637-FA1287F3D16E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTCOSA.Infrastructure", "ISTCOSA.Infrastructure\ISTCOSA.Infrastructure.csproj", "{33D9BF8A-B9FE-4EA5-825A-12CA02C9FEB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTCOSA.Infrastructure", "ISTCOSA.Infrastructure\ISTCOSA.Infrastructure.csproj", "{33D9BF8A-B9FE-4EA5-825A-12CA02C9FEB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

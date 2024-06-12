@@ -1,7 +1,5 @@
-﻿using ISTCOSA.Application.Common.DTOs;
-using ISTCOSA.Application.Company.Queries;
-using ISTCOSA.Application.Industry.Queries;
-using Microsoft.AspNetCore.Http;
+﻿using ISTCOSA.Application.CommandAndQuries.Industry.Queries;
+using ISTCOSA.Application.Common.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTCOSA.Controllers

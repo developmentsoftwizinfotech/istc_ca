@@ -1,11 +1,6 @@
-﻿using ISTCOSA.Application.City.Queries;
+﻿using ISTCOSA.Application.CommandAndQuries.City.Queries;
 using ISTCOSA.Application.Common.DTOs;
-using ISTCOSA.Application.State.Queries;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace ISTCOSA.Controllers
 {

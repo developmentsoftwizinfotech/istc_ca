@@ -1,12 +1,6 @@
-﻿using ISTCOSA.Application.Batch.Commands.CreateBatch;
+﻿using ISTCOSA.Application.CommandAndQuries.Profession.Commands;
+using ISTCOSA.Application.CommandAndQuries.Profession.Queries;
 using ISTCOSA.Application.Common.DTOs;
-using ISTCOSA.Application.EmploymentType.Commands;
-using ISTCOSA.Application.EmploymentType.Queries;
-using ISTCOSA.Application.Industry.Queries;
-using ISTCOSA.Application.UserEmployment.Commands;
-using ISTCOSA.Domain.Entities;
-using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTCOSA.Controllers
