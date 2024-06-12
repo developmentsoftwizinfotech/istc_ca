@@ -1,5 +1,4 @@
-﻿using ISTCOSA.Application.Account.Commands;
-using Microsoft.AspNetCore.Http;
+﻿using ISTCOSA.Application.CommandAndQuries.Account.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTCOSA.Controllers

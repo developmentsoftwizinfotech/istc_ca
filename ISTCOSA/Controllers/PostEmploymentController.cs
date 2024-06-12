@@ -1,11 +1,6 @@
-﻿using ISTCOSA.Application.Batches.Commands.DeleteBatch;
+﻿using ISTCOSA.Application.CommandAndQuries.UserEmployment.Commands;
+using ISTCOSA.Application.CommandAndQuries.UserEmployment.Queries;
 using ISTCOSA.Application.Common.DTOs;
-using ISTCOSA.Application.Country.Queries;
-using ISTCOSA.Application.RollNumbers.Commands.CreateRollNumber;
-using ISTCOSA.Application.RollNumbers.Commands.UpdateRollNumber;
-using ISTCOSA.Application.UserEmployment.Commands;
-using ISTCOSA.Application.UserEmployment.Queries;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTCOSA.Controllers

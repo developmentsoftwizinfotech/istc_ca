@@ -1,10 +1,6 @@
-﻿using ISTCOSA.Application.Batch.Commands.CreateBatch;
-using ISTCOSA.Application.Batch.Queries.GetBatches;
-using ISTCOSA.Application.UserProfile.Queries.GetUserProfiles;
-using ISTCOSA.Application.UserRegister.Commands.CreateUserRegister;
-using ISTCOSA.Application.UserRegister.Queries.GetUserRegister;
-using MediatR;
-using Microsoft.AspNetCore.Http;
+﻿
+using ISTCOSA.Application.CommandAndQuries.UserRegister.Commands.CreateUserRegister;
+using ISTCOSA.Application.CommandAndQuries.UserRegister.Queries.GetUserRegister;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTCOSA.Controllers
@@ -29,14 +25,22 @@ namespace ISTCOSA.Controllers
         [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateUser(CreateUserRegisterCommands createUserProfileCommands)
         {
-            if (createUserProfileCommands == null)
+            try
             {
-                _logger.LogWarning("CreateUser: Received null createUserProfileCommands");
-                return NotFound();
+                if (createUserProfileCommands == null)
+                {
+                    _logger.LogWarning("CreateUser: Received null createUserProfileCommands");
+                    return NotFound();
+                }
+                _logger.LogInformation("CreateUser called with data: {@createUserProfileCommands}", createUserProfileCommands);
+                var createUser = await Mediator.Send(createUserProfileCommands);
+                return Ok(createUser);
             }
-            _logger.LogInformation("CreateUser called with data: {@createUserProfileCommands}", createUserProfileCommands);
-            var createUser = await Mediator.Send(createUserProfileCommands);
-            return Ok(createUser);
+            catch (Exception ex)
+            {
+                return NotFound(new { Message = ex.Message });
+            }
+
         }
 
         [HttpGet("CheckEmailExists")]

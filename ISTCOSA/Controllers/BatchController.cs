@@ -1,14 +1,10 @@
-﻿using ISTCOSA.Application.Batch.Commands.CreateBatch;
-using ISTCOSA.Application.Batch.Queries.GetBatches;
-using ISTCOSA.Application.Batches.Commands.DeleteBatch;
-using ISTCOSA.Application.Batches.Commands.UpdateBatch;
-using ISTCOSA.Application.Batches.Queries.GetBatchById;
+﻿using ISTCOSA.Application.CommandAndQuries.Batches.Commands.CreateBatch;
+using ISTCOSA.Application.CommandAndQuries.Batches.Commands.DeleteBatch;
+using ISTCOSA.Application.CommandAndQuries.Batches.Commands.UpdateBatch;
+using ISTCOSA.Application.CommandAndQuries.Batches.Queries.GetBatchById;
+using ISTCOSA.Application.CommandAndQuries.Batches.Queries.GetBatches;
 using ISTCOSA.Application.Common.DTOs;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace ISTCOSA.Controllers
 {

@@ -1,13 +1,10 @@
-﻿using ISTCOSA.Application.Common.DTOs;
-using ISTCOSA.Application.RollNumbers.Commands.CreateRollNumber;
-using ISTCOSA.Application.RollNumbers.Commands.DeleteRollNumber;
-using ISTCOSA.Application.RollNumbers.Commands.UpdateRollNumber;
-using ISTCOSA.Application.RollNumbers.Queries.GetRollNumberById;
-using ISTCOSA.Application.RollNumbers.Queries.GetRollNumbers;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using ISTCOSA.Application.CommandAndQuries.RollNumbers.Commands.CreateRollNumber;
+using ISTCOSA.Application.CommandAndQuries.RollNumbers.Commands.DeleteRollNumber;
+using ISTCOSA.Application.CommandAndQuries.RollNumbers.Commands.UpdateRollNumber;
+using ISTCOSA.Application.CommandAndQuries.RollNumbers.Queries.GetRollNumberById;
+using ISTCOSA.Application.CommandAndQuries.RollNumbers.Queries.GetRollNumbers;
+using ISTCOSA.Application.Common.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace ISTCOSA.Controllers
 {

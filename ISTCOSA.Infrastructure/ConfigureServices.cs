@@ -1,4 +1,5 @@
 ﻿using ISTCOSA.Application.Common.Mapping;
+using ISTCOSA.Application.Interfaces;
 using ISTCOSA.Infrastructure.Data;
 using ISTCOSA.Infrastructure.Utility;
 using Microsoft.AspNetCore.Identity;
@@ -18,6 +19,8 @@ namespace ISTCOSA.Infrastructure
             {
                 options.UseSqlServer(configuration.GetConnectionString("ConStr"));
             });
+
+            services.AddScoped<IApplicationDBContext, ApplicationDbContext>();
             services.AddMediatR(ctg =>
             {
                 ctg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
