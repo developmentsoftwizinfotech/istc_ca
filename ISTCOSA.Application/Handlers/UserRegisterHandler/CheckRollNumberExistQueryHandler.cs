@@ -17,7 +17,7 @@ namespace ISTCOSA.Application.Handlers.UserRegisterHandler
         }
         public async Task<UserRegisterDTOs> Handle(CheckRollNumberExistQuery request, CancellationToken cancellationToken)
         {
-            var ExistRecord = await _Context.userRegisters.AsNoTracking().FirstOrDefaultAsync(x => x.RollNumberId == request.RollNumberId);
+            var ExistRecord = await _Context.userRegisters.FirstOrDefaultAsync(x => x.RollNumberId == request.RollNumberId);
             if (ExistRecord == null) return null;
             
                 var mappeddata = _Mapper.Map<UserRegisterDTOs>(ExistRecord);
