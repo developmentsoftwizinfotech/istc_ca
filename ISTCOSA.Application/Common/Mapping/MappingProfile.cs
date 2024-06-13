@@ -19,8 +19,8 @@ namespace ISTCOSA.Application.Common.Mapping
             CreateMap<IndustryDTO, Domain.Entities.Industry>().ReverseMap();
             CreateMap<ProfessionDTO, Domain.Entities.Profession>().ReverseMap();
 
-            CreateMap<UserRegisterDTOs, Domain.Entities.UserProfile>();
-            CreateMap<Domain.Entities.UserProfile, UserRegisterDTOs>()
+            CreateMap<UserRegisterDTOs, Domain.Entities.UserRegister>();
+            CreateMap<Domain.Entities.UserRegister, UserRegisterDTOs>()
                 .ForMember(dest => dest.CityId, opt => opt.MapFrom(src => src.CityId))
                 .ForMember(dest => dest.BatchId, opt => opt.MapFrom(src => src.RollNumber.Batch.BatchId))
                 .ForMember(dest => dest.BatchNumber, opt => opt.MapFrom(src => src.RollNumber.Batch.BatchNumber))

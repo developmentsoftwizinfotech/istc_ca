@@ -13,7 +13,7 @@ namespace ISTCOSA.Domain.Entities
         public int Id { get; set; } 
         public string UserId { get; set; }  
         [ForeignKey("UserId")]
-        public UserProfile User { get; set; }  
+        public UserRegister User { get; set; }  
         public string Address { get; set; }
         public string MaritalStatus { get; set; }  
         public string FatherName { get; set; }

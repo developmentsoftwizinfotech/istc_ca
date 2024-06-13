@@ -16,7 +16,7 @@ namespace ISTCOSA.Infrastructure.Handlers.UserRegisterHandler
         }
         public async Task<UserRegisterDTOs> Handle(CheckPhoneNumberExistQuery request, CancellationToken cancellationToken)
         {
-            var phoneExist = await _context.userProfiles.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
+            var phoneExist = await _context.userRegisters.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
             if (phoneExist != null)
             {
                 var mappeddata = _mapper.Map<UserRegisterDTOs>(phoneExist);

@@ -24,9 +24,9 @@ namespace ISTCOSA.Infrastructure.Handlers.UserProfileHandler
         }
         public async Task<UserRegisterDTOs> Handle(UpdateUserProfileCommand request, CancellationToken cancellationToken)
         {
-            var existingPhone = await _context.userProfiles.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber && x.Id != request.Id);
+            var existingPhone = await _context.userRegisters.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber && x.Id != request.Id);
             if (existingPhone != null) throw new Exception("Phone Number has Already used by Someone");
-            var existingEmail = await _context.userProfiles.FirstOrDefaultAsync(x => x.Email == request.Email && x.Id != request.Id);
+            var existingEmail = await _context.userRegisters.FirstOrDefaultAsync(x => x.Email == request.Email && x.Id != request.Id);
             if (existingEmail != null) throw new Exception("Email has Already used by Someone");
             string newImagePath = null;
             if (!string.IsNullOrEmpty(request.Images))
@@ -34,7 +34,7 @@ namespace ISTCOSA.Infrastructure.Handlers.UserProfileHandler
                 var ext = request.ImageType;
                 newImagePath = SaveImage(request.Images,ext);
             }
-            var existingUser = await _context.userProfiles.FindAsync(request.Id);
+            var existingUser = await _context.userRegisters.FindAsync(request.Id);
             if (existingUser == null) throw new Exception("User Not Found");
 
             if (!string.IsNullOrEmpty(request.Images) && !string.IsNullOrEmpty(existingUser.Images))
