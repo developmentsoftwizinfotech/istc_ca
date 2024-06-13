@@ -56,5 +56,12 @@ namespace ISTCOSA.Controllers
             var phoneExists = await Mediator.Send(new CheckPhoneNumberExistQuery { PhoneNumber = phoneNumber });
             return Ok(phoneExists);
         }
+
+        [HttpGet("CheckRollNumberExist")]
+        public async Task<IActionResult> CheckRollNumberExist(int id)
+        {
+            var RollNumberExist = await Mediator.Send(new CheckRollNumberExistQuery {RollNumberId  = id });
+            return Ok(RollNumberExist);
+        }
     }
 }

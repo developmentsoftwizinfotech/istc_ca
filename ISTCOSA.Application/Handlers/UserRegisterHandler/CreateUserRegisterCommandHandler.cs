@@ -38,9 +38,9 @@ namespace ISTCOSA.Infrastructure.Handlers.UserProfileHandler
         {
             try
             {
-                var existingPhone = await _context.userProfiles.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
+                var existingPhone = await _context.userRegisters.FirstOrDefaultAsync(x => x.PhoneNumber == request.PhoneNumber);
                 if (existingPhone != null) throw new Exception("Phone Number has Already used by Someone");
-                var existingEmail = await _context.userProfiles.FirstOrDefaultAsync(x => x.Email == request.Email);
+                var existingEmail = await _context.userRegisters.FirstOrDefaultAsync(x => x.Email == request.Email);
                 if (existingEmail != null) throw new Exception("Email has Already used by Someone");
                 var rollNumber = await _context.rollNumbers
                     .Where(r => r.RollNumberId == request.RollNumberId)
@@ -50,7 +50,7 @@ namespace ISTCOSA.Infrastructure.Handlers.UserProfileHandler
                 {
                     throw new Exception("Invalid RollNumberId");
                 }
-                var existingUser = await _context.userProfiles.FirstOrDefaultAsync(x => x.UserName == rollNumber.ToString());
+                var existingUser = await _context.userRegisters.FirstOrDefaultAsync(x => x.UserName == rollNumber.ToString());
                 if (existingUser != null) throw new Exception("UserName is already in use. ");
 
                 var batchnumber = await _context.rollNumbers
@@ -75,7 +75,7 @@ namespace ISTCOSA.Infrastructure.Handlers.UserProfileHandler
                     var ext = request.ImageType;
                     imagePath = SaveImage(request.Images, ext);
                 }
-                var userProfile = new UserProfile
+                var userProfile = new UserRegister
                 {
                     UserName = rollNumber.ToString(),
                     RollNumberId = request.RollNumberId,

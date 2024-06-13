@@ -17,7 +17,8 @@ namespace ISTCOSA.Infrastructure.Handlers.UserSearchHandler
         }
         public async Task<List<UserRegisterDTOs>> Handle(UserSearchCommand request, CancellationToken cancellationToken)
         {
-            IQueryable<UserProfile> query = _Context.userProfiles;
+            IQueryable<UserRegister> query = _Context.userRegisters.Include(x => x.RollNumber.Batch)
+                .Include(x => x.city).Include(x => x.city.State).Include(x => x.city.State.Country);
 
             if (!string.IsNullOrEmpty(request.FullName))
             {
@@ -47,7 +48,10 @@ namespace ISTCOSA.Infrastructure.Handlers.UserSearchHandler
             {
                 query = query.Where(x => x.city.State.CountryId == request.CountryId);
             }
-
+            if (request.DateOfBirth != null && request.DateOfBirth > DateTime.MinValue)
+            {
+                query = query.Where(x => x.DateOfBirth == request.DateOfBirth);
+            }
             int totalRecords = await query.CountAsync(cancellationToken);
             query = query.Skip((request.PageNumber - 1) * request.PageSize).Take(request.PageSize);
 

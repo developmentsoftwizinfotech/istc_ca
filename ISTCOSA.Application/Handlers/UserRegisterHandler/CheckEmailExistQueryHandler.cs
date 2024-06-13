@@ -16,7 +16,7 @@ namespace ISTCOSA.Infrastructure.Handlers.UserRegisterHandler
         }
         public async Task<UserRegisterDTOs> Handle(CheckEmailExistQuery request, CancellationToken cancellationToken)
         {
-            var EmailExist = await _context.userProfiles.FirstOrDefaultAsync(x=>x.Email==request.Email);
+            var EmailExist = await _context.userRegisters.FirstOrDefaultAsync(x=>x.Email==request.Email);
             if (EmailExist != null)
             {
                 var mappeddata = _mapper.Map<UserRegisterDTOs>(EmailExist);

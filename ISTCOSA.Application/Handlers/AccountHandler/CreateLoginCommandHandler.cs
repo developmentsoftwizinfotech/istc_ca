@@ -35,7 +35,7 @@ namespace ISTCOSA.Infrastructure.Handlers.AccountHandler
         {
             try
             {
-                var user = await _context.userProfiles.FirstOrDefaultAsync(u => u.UserName == request.RollNumber, cancellationToken);
+                var user = await _context.userRegisters.FirstOrDefaultAsync(u => u.UserName == request.RollNumber, cancellationToken);
                 var user1 = await _userManager.FindByNameAsync(request.RollNumber);
                 if (user == null)
                 {

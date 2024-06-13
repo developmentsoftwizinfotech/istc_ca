@@ -18,7 +18,7 @@ namespace ISTCOSA.Infrastructure.Handlers.UserProfileHandler
         }
         public async Task<List<UserRegisterDTOs>> Handle(GetAllUserRegister request, CancellationToken cancellationToken)
         {
-            var userProfiles = await _context.userProfiles.Include(u => u.RollNumber).Include(u => u.RollNumber.Batch)
+            var userProfiles = await _context. userRegisters.Include(u => u.RollNumber).Include(u => u.RollNumber.Batch)
                 .Include(u => u.city).Include(u => u.city.State).Include(u => u.city.State.Country).ToListAsync(cancellationToken);
             var MappedUserProfiles = _mapper.Map<List<UserRegisterDTOs>>(userProfiles);
             return MappedUserProfiles;

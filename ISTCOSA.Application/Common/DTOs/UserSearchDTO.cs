@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ISTCOSA.Application.Common.DTOs
 {
-    public class UserSearchDTO:IMapping<Domain.Entities.UserProfile>
+    public class UserSearchDTO:IMapping<Domain.Entities.UserRegister>
     {
         
         public int? BatchNumber { get; set; }

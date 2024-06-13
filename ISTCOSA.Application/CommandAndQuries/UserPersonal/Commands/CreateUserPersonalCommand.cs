@@ -37,7 +37,7 @@ namespace ISTCOSA.Application.CommandAndQuries.UserPersonal.Commands
         public DateTime? JoiningYear { get; set; }
         public DateTime? ExpectedComplitionYear { get; set; }
         public string CompanyName { get; set; }
-        public int? CityId { get; set; }
+        public int CityId { get; set; }
         public int? CompanyId { get; set; }
         public string? CompanyAddress { get; set; }
         public string? CompanyPhoneNumber { get; set; }

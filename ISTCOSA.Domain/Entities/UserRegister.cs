@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISTCOSA.Domain.Entities
 {
-    public class UserProfile : IdentityUser
+    public class UserRegister : IdentityUser
     {
         public int RollNumberId { get; set; }
         public int CityId { get; set; }

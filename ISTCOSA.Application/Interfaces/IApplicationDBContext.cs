@@ -8,7 +8,7 @@ namespace ISTCOSA.Application.Interfaces
 {
     public interface IApplicationDBContext
     {
-        public DbSet<UserProfile> userProfiles { get; set; }
+        public DbSet<UserRegister> userRegisters { get; set; }
         public DbSet<RollNumber> rollNumbers { get; set; }
         public DbSet<Batch> batches { get; set; }
         public DbSet<Country> countries { get; set; }

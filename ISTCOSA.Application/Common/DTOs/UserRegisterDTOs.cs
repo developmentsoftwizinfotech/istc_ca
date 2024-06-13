@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ISTCOSA.Application.Common.DTOs
 {
-    public class UserRegisterDTOs:IMapping<Domain.Entities.UserProfile>
+    public class UserRegisterDTOs:IMapping<Domain.Entities.UserRegister>
     {
         
         public int BatchId { get; set; }
@@ -30,9 +30,9 @@ namespace ISTCOSA.Application.Common.DTOs
         public DateTime? DateOfBirth { get; set; }
         public string? Images { get; set; }
         public string PinCode { get; set; }
-        public RollNumberDTO RollNumber { get; set; }
-        public BatchDTO Batch { get; set; }
-        public CityDTO City { get; set; }
+        //public RollNumberDTO RollNumber { get; set; }
+        //public BatchDTO Batch { get; set; }
+        //public CityDTO City { get; set; }
         public bool? IsActive { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
