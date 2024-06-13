@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ISTCOSA.Infrastructure.Handlers.UserSearchHandler
 {
-    public class UserSearchCommandHandler : IRequestHandler<UserSearchCommand, List<UserRegisterDTOs>>
+    public class UserSearchCommandHandler : IRequestHandler<UserSearchCommand, PaginatedResponseDTO<UserRegisterDTOs>>
     {
         private readonly IApplicationDBContext _Context;
         private readonly IMapper _mapper;
@@ -15,10 +15,11 @@ namespace ISTCOSA.Infrastructure.Handlers.UserSearchHandler
             _Context = Context;
             _mapper = mapper;
         }
-        public async Task<List<UserRegisterDTOs>> Handle(UserSearchCommand request, CancellationToken cancellationToken)
+
+        public async Task<PaginatedResponseDTO<UserRegisterDTOs>> Handle(UserSearchCommand request, CancellationToken cancellationToken)
         {
             IQueryable<UserRegister> query = _Context.userRegisters.Include(x => x.RollNumber.Batch)
-                .Include(x => x.city).Include(x => x.city.State).Include(x => x.city.State.Country);
+                .Include(x => x.city).ThenInclude(c => c.State).ThenInclude(s => s.Country);
 
             if (!string.IsNullOrEmpty(request.FullName))
             {
@@ -58,8 +59,16 @@ namespace ISTCOSA.Infrastructure.Handlers.UserSearchHandler
             var studentList = await query.ToListAsync(cancellationToken);
             var mappedData = _mapper.Map<List<UserRegisterDTOs>>(studentList);
 
-            return mappedData;
+            var totalPages = (int)Math.Ceiling(totalRecords / (double)request.PageSize);
 
+            return new PaginatedResponseDTO<UserRegisterDTOs>
+            {
+                PageNumber = request.PageNumber,
+                PageSize = request.PageSize,
+                TotalPages = totalPages,
+                TotalRecords = totalRecords,
+                Data = mappedData
+            };
         }
     }
 }

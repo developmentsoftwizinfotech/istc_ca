@@ -43,7 +43,7 @@ namespace ISTCOSA.Controllers
         }
 
         [HttpPost("CreateBatch")]
-        public async Task<IActionResult> CreateBatch([FromBody] CreateCommands createBatchCommand)
+        public async Task<IActionResult> CreateBatch([FromBody] CreateBatchCommands createBatchCommand)
         {
             if (createBatchCommand == null)
             {

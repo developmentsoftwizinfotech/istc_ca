@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ISTCOSA.Application.CommandAndQuries.UserSearch
 {
-    public class UserSearchCommand : IRequest<List<UserRegisterDTOs>>
+    public class UserSearchCommand : IRequest<PaginatedResponseDTO<UserRegisterDTOs>>
     {
         public int? BatchNumber { get; set; }
         public int? RollNumbers { get; set; }

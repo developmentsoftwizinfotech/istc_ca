@@ -53,7 +53,8 @@ namespace ISTCOSA.Infrastructure.Handlers.AccountHandler
                     return new LoginDTO
                     {
                         UserName = user.UserName,
-                        Token = token
+                        Token = token,
+                        UserId = user.Id
                     };
                 }
                 else
