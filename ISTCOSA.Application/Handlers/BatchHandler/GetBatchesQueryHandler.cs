@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.Batches.Queries.GetBatches;
 
-using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 
 

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.RollNumbers.Commands.UpdateRollNumber;
-using MediatR;
+
 
 namespace ISTCOSA.Infrastructure.Handlers.RollNumberHandler
 {

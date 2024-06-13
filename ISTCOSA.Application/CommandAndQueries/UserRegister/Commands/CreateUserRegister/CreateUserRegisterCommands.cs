@@ -1,6 +1,6 @@
 ﻿using ISTCOSA.Application.Common.DTOs;
 using ISTCOSA.Domain.Entities;
-using MediatR;
+
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;

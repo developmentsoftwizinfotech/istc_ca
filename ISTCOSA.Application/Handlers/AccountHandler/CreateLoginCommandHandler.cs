@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.Account.Commands;
-using MediatR;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

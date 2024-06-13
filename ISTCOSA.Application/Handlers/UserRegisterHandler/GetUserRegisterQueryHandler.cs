@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.UserRegister.Queries.GetUserRegister;
-using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace ISTCOSA.Infrastructure.Handlers.UserProfileHandler

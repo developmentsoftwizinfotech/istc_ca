@@ -1,6 +1,6 @@
 ﻿using ISTCOSA.Application.CommandAndQuries.Account.Commands;
 
-using MediatR;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Net;

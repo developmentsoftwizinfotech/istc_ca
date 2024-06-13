@@ -1,6 +1,6 @@
 ﻿using ISTCOSA.Application.Common.DTOs;
 using ISTCOSA.Domain.Entities;
-using MediatR;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,13 +1,5 @@
 ﻿using AutoMapper;
-using ISTCOSA.Application.Common.DTOs;
-using ISTCOSA.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
+ 
 namespace ISTCOSA.Application.Common.Mapping
 {
     public class MappingProfile:Profile

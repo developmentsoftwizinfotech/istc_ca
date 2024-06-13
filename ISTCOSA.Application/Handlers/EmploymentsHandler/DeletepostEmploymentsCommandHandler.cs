@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.UserEmployment.Commands;
-using MediatR;
+
 
 namespace ISTCOSA.Infrastructure.Handlers.UserEmploymentHandler
 {

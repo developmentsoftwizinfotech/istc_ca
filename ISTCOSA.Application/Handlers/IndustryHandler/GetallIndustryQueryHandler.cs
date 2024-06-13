@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.Industry.Queries;
-using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace ISTCOSA.Infrastructure.Handlers.IndustryHandler

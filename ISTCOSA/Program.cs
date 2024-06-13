@@ -1,4 +1,5 @@
 using ISTCOSA.Application;
+using ISTCOSA.Application.Common;
 using ISTCOSA.Infrastructure;
 using ISTCOSA.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -121,6 +122,8 @@ async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 app.UseHttpsRedirection();
 app.UseCors("MyPolicy");
 app.UseAuthorization();

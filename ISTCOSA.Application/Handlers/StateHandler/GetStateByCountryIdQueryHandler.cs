@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.State.Queries;
-using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace ISTCOSA.Infrastructure.Handlers.StateHandler

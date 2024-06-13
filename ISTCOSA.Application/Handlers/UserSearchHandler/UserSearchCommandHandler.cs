@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.UserSearch;
 using ISTCOSA.Domain.Entities;
-using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace ISTCOSA.Infrastructure.Handlers.UserSearchHandler

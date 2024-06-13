@@ -2,7 +2,7 @@
 using ISTCOSA.Application.CommandAndQuries.Batches.Queries.GetBatchById;
 
 
-using MediatR;
+
 
 
 namespace ISTCOSA.Infrastructure.Handlers.BatchHandler

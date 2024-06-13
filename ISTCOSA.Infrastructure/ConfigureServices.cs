@@ -1,8 +1,6 @@
-﻿using ISTCOSA.Application.Common.Mapping;
-using ISTCOSA.Application.Interfaces;
+﻿using ISTCOSA.Application.Interfaces;
 using ISTCOSA.Infrastructure.Data;
 using ISTCOSA.Infrastructure.Utility;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

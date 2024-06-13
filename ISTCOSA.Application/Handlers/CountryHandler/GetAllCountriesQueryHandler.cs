@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.Country.Queries;
 
-using MediatR;
+
 using Microsoft.EntityFrameworkCore;
 
 

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.Batches.Commands.DeleteBatch;
-using MediatR;
 
 
 namespace ISTCOSA.Infrastructure.Handlers.BatchHandler

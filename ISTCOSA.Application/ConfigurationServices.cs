@@ -1,9 +1,9 @@
-﻿using ISTCOSA.Application.Common.Mapping;
-using ISTCOSA.Application.Common.ValidationBehaviour;
-using MediatR;
+﻿using ISTCOSA.Application.Common.Behaviours;
+using ISTCOSA.Application.Common.Mapping;
+
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using FluentValidation;
+
 
 namespace ISTCOSA.Application
 {
@@ -14,11 +14,15 @@ namespace ISTCOSA.Application
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             services.AddMediatR(ctg =>
             {
                 ctg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-                ctg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             });
+
+
             return services;
         }
     }

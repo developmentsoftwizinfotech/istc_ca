@@ -2,12 +2,12 @@
  
 using ISTCOSA.Domain.Entities;
  
-using MediatR;
+
 using Microsoft.EntityFrameworkCore;
  
 namespace ISTCOSA.Infrastructure.Handlers.BatchHandler
 {
-    public class CreateBatchCommandHandler : IRequestHandler<CreateBatchCommands, BatchDTO>
+    public class CreateBatchCommandHandler : IRequestHandler<CreateBatchCommand, BatchDTO>
     {
         private readonly IApplicationDBContext _context;
         private readonly IMapper _mapper;
@@ -16,7 +16,7 @@ namespace ISTCOSA.Infrastructure.Handlers.BatchHandler
             _context = context;
             _mapper = mapper;
         }
-        public async Task<BatchDTO> Handle(CreateBatchCommands request, CancellationToken cancellationToken)
+        public async Task<BatchDTO> Handle(CreateBatchCommand request, CancellationToken cancellationToken)
         {
             var existingBatch = await _context.batches.FirstOrDefaultAsync(x => x.BatchNumber == request.BatchNumber);
             if (existingBatch != null) throw new Exception("Batch Number is Already Saved");

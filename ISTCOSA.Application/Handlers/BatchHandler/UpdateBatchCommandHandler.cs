@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ISTCOSA.Application.CommandAndQuries.Batches.Commands.UpdateBatch;
 
-using MediatR;
+
 
 
 namespace ISTCOSA.Infrastructure.Handlers.BatchHandler
