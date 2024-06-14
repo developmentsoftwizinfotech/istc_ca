@@ -25,8 +25,8 @@ namespace ISTCOSA.Controllers
         [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateUser(CreateUserRegisterCommands createUserProfileCommands)
         {
-            try
-            {
+           
+
                 if (createUserProfileCommands == null)
                 {
                     _logger.LogWarning("CreateUser: Received null createUserProfileCommands");
@@ -35,11 +35,7 @@ namespace ISTCOSA.Controllers
                 _logger.LogInformation("CreateUser called with data: {@createUserProfileCommands}", createUserProfileCommands);
                 var createUser = await Mediator.Send(createUserProfileCommands);
                 return Ok(createUser);
-            }
-            catch (Exception ex)
-            {
-                return NotFound(new { Message = ex.Message });
-            }
+         
 
         }
 

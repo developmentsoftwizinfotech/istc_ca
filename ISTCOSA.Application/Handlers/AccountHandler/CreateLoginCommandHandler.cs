@@ -41,11 +41,13 @@ namespace ISTCOSA.Infrastructure.Handlers.AccountHandler
                 {
                     throw new Exception("Invalid username or password.");
                 }
+                
 
                 var result = await _signInManager.CheckPasswordSignInAsync(user1, request.Password, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {
+                    var userPersonal = await _context.UserPersonalInformation.FirstOrDefaultAsync(x => x.UserId == user.Id);
                     user.LastLoginDate = DateTime.Now;
                     _context.Update(user);
                     await _context.SaveChangesAsync();
@@ -54,7 +56,8 @@ namespace ISTCOSA.Infrastructure.Handlers.AccountHandler
                     {
                         UserName = user.UserName,
                         Token = token,
-                        UserId = user.Id
+                        UserId = user.Id,
+                        UserPersonalId = userPersonal?.Id.ToString() ?? "0",
                     };
                 }
                 else

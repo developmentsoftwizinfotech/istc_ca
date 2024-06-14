@@ -29,7 +29,6 @@ namespace ISTCOSA.Application.Common
                 await HandleExceptionAsync(context, ex);
             }
         }
-
         private static Task HandleValidationExceptionAsync(HttpContext context, AppValidationException exception)
         {
             context.Response.ContentType = "application/json";

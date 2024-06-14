@@ -45,7 +45,7 @@ namespace ISTCOSA.Infrastructure.Handlers.UserPersonalHandler
 
                     await _context.AddAsync(userPersonal);
                     var profession = await _context.professions.FirstOrDefaultAsync(x => x.Id == request.ProfessionId);
-                    if (profession == null) return null;
+                    if (profession == null) throw new Exception("Profession not Found");
 
                     if (profession.Name == "Student")
                     {

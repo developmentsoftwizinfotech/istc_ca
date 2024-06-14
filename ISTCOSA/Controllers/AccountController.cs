@@ -10,15 +10,23 @@ namespace ISTCOSA.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(CreateLoginCommand createLogin)
         {
-            if(ModelState.IsValid) {
-
-                var login = await Mediator.Send(createLogin);
-                return Ok(login);
-            }
-            else
+            try
             {
-                return NoContent();
+                if (ModelState.IsValid)
+                {
+                    var login = await Mediator.Send(createLogin);
+                    return Ok(login);
+                }
+                else
+                {
+                    return NoContent();
+                }
             }
+            catch (Exception ex)
+            {
+               return BadRequest(ex.Message);
+            }
+            
         }
 
         [HttpPost("GenerateResetPasswordToken")]

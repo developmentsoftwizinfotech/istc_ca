@@ -22,7 +22,7 @@ namespace ISTCOSA.Application.CommandAndQuries.UserRegister.Commands.CreateUserR
         public string PhoneNumber { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public string? Images { get; set; }
-        public string ImageType { get; set; }
+        public string? ImageType { get; set; }
 
 
 

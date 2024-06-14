@@ -15,9 +15,9 @@ namespace ISTCOSA.Domain.Entities
         [ForeignKey("UserId")]
         public UserRegister User { get; set; }  
         public string Address { get; set; }
-        public string MaritalStatus { get; set; }  
+        public string? MaritalStatus { get; set; }  
         public string FatherName { get; set; }
-        public string SpouseName { get; set; }  
+        public string? SpouseName { get; set; }  
         public DateTime? AnniversaryDate { get; set; } 
         public string ISTCNickName { get; set; }
         public string ISTCFriend { get; set; }
@@ -25,7 +25,7 @@ namespace ISTCOSA.Domain.Entities
         public string Comments { get; set; }
         public string AboutYourself { get; set; }  
         public string WhatsappNumber { get; set; }
-        public string MembershipType { get; set; }
+        public string? MembershipType { get; set; }
         
         public DateTime? LastLoginDate { get; set; }
         public DateTime? CreatedDate { get; set; }

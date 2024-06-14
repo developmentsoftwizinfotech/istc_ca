@@ -1,12 +1,4 @@
 ﻿using ISTCOSA.Application.Common.DTOs;
-
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ISTCOSA.Application.CommandAndQuries.UserPersonal.Commands
 {
     public class CreateUserPersonalCommand : IRequest<UserPersonalDTO>
@@ -36,7 +28,7 @@ namespace ISTCOSA.Application.CommandAndQuries.UserPersonal.Commands
         public string? Skills { get; set; }
         public DateTime? JoiningYear { get; set; }
         public DateTime? ExpectedComplitionYear { get; set; }
-        public string CompanyName { get; set; }
+        public string? CompanyName { get; set; }
         public int CityId { get; set; }
         public int? CompanyId { get; set; }
         public string? CompanyAddress { get; set; }
