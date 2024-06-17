@@ -1,6 +1,7 @@
 ﻿using ISTCOSA.Application.CommandAndQuries.UserPersonal.Commands;
 using ISTCOSA.Application.CommandAndQuries.UserPersonal.Queries;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 
 namespace ISTCOSA.Controllers
 {
@@ -33,14 +34,20 @@ namespace ISTCOSA.Controllers
         [HttpPost("CreateUserPersonal")]
         public async Task<IActionResult> CreateUserPersonal(CreateUserPersonalCommand createUserPersonalCommand)
         {
-            if (createUserPersonalCommand == null)
+            try
             {
-                _logger.LogWarning("CreateUser: Received null createUserProfileCommands");
-                return NotFound();
+                if (createUserPersonalCommand == null)
+                {
+                    return NotFound();
+                }
+                var UserPersonal = await Mediator.Send(createUserPersonalCommand);
+                return Ok(UserPersonal);
             }
-            _logger.LogInformation("CreateUser called with data: {@createUserProfileCommands}", createUserPersonalCommand);
-            var UserPersonal = await Mediator.Send(createUserPersonalCommand);
-            return Ok(UserPersonal);
+            catch (Exception ex)
+            {
+                return BadRequest($"Error retrieving user personal information: {ex.Message}");
+            }
+            
         }
 
 

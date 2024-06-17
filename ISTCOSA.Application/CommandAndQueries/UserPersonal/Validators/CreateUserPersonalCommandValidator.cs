@@ -12,10 +12,22 @@ namespace ISTCOSA.Application.CommandAndQuries.UserPersonal.Validation
     {
         public CreateUserPersonalCommandValidator()
         {
-            RuleFor(v => v.ISTCAbout).NotEmpty().WithMessage("ISTCAbout is required");
-            RuleFor(v => v.MaritalStatus).NotEmpty().WithMessage("MaritalStatus is required");
-            RuleFor(v => v.WhatsappNumber).NotEmpty().WithMessage("WhatsApp Number is required");
-            RuleFor(v => v.Address).NotEmpty().WithMessage("WhatsApp Number is required");
+            RuleFor(v => v.ISTCAbout)
+                .NotEmpty().WithMessage("ISTC About is required.")
+                .MaximumLength(250).WithMessage("ISTC About must not exceed 250 characters.");
+
+            RuleFor(v => v.MaritalStatus)
+                .NotEmpty().WithMessage("Marital status is required.")
+                .Must(status => status == "Single" || status == "Married" || status == "Divorced" || status == "Widowed")
+                .WithMessage("Marital status must be 'Single', 'Married', 'Divorced', or 'Widowed'.");
+
+            RuleFor(v => v.WhatsappNumber)
+                .NotEmpty().WithMessage("WhatsApp number is required.")
+                .Matches(@"^\+?\d{1,3}[- ]?\d{10}$").WithMessage("Invalid WhatsApp number format.");
+
+            RuleFor(v => v.Address)
+                .NotEmpty().WithMessage("Address is required.")
+                .MaximumLength(500).WithMessage("Address must not exceed 500 characters.");
         }
     }
 }

@@ -21,7 +21,6 @@ namespace ISTCOSA.Application.Common.Exceptions
             {
                 var propertyName = failureGroup.Key;
                 var propertyFailures = failureGroup.ToArray();
-
                 Errors.Add(propertyName, propertyFailures);
             }
         }

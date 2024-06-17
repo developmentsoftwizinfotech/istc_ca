@@ -20,5 +20,29 @@ namespace ISTCOSA.Application.Common.DTOs
         public string WhatsappNumber { get; set; }
         public string MembershipType { get; set; }
         public string LastLoginDate { get; set; }
+        public int UserWorkId { get; set; }
+        public UserWork UserWork { get; set; }
+        public int UserStudentId { get; set; }
+        public UserStudent UserStudent { get; set; }
+        //public int CompanyId { get; set; }
+        //public Company Company { get; set;}
+        public string UserFullName { get; set; }
+        public int UserBatchId { get; set; }
+        public int UserBatchNumber { get; set; }
+        public int UserRollNumberId { get; set; }
+        public int UserRollNumbers { get; set; }
+        public string UserCityName { get; set; }
+        public int UserStateId { get; set; }
+        public string UserStateName { get; set; }
+        public int UserCountryId { get; set; }
+        public string UserCountryName { get; set; }
+        public string UserGender { get; set; }
+        public DateTime UserDateOfBirth { get; set; }
+        public string UserPinCode { get; set; }
+        public string UserPhoneNumber { get; set; }
+        public int UserRegisterId { get; set; }
+        public string Images { get; set; }
+        public string ImagePath { get; set; }
+
     }
 }

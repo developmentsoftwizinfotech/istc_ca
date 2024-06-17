@@ -6,8 +6,9 @@ namespace ISTCOSA.Application.CommandAndQuries.Batches.Validators
     {
         public CreateBatchCommandValidator()
         {
-            RuleFor(v => v.BatchNumber).NotEmpty().WithMessage("BatchNumber is required");
-           
+            RuleFor(v => v.BatchNumber)
+                .NotEmpty().WithMessage("Batch number is required.")
+                .InclusiveBetween(1, int.MaxValue).WithMessage("Batch number must be a positive integer.");
         }
     }
 }

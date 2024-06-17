@@ -2,6 +2,7 @@ using ISTCOSA.Application;
 using ISTCOSA.Application.Common;
 using ISTCOSA.Infrastructure;
 using ISTCOSA.Infrastructure.Data;
+using ISTCOSA.Infrastructure.Utility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -80,16 +81,21 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
+builder.Services.Configure<APISetting>(builder.Configuration.GetSection("APISetting"));
+
+var apiSetting = builder.Configuration.GetSection("APISetting").Get<APISetting>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("MyPolicy", policyBuilder =>
     {
-        policyBuilder.WithOrigins("http://localhost:5067", "http://localhost:5272")
+        policyBuilder.WithOrigins(apiSetting.URL,"http://localhost:5272")
                      .AllowAnyHeader()
                      .AllowAnyMethod()
                      .AllowCredentials();
     });
 });
+
 
 var app = builder.Build();
 using var scope = app.Services.CreateScope();

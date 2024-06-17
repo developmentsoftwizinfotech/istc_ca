@@ -12,9 +12,12 @@ namespace ISTCOSA.Application.CommandAndQuries.RollNumbers.Validation
     {
         public CreateRollNumberCommandValidator()
         {
-            RuleFor(v => v.RollNumbers).NotEmpty().WithMessage("RollNumbers is required");
-            RuleFor(v => v.BatchId).NotEmpty().WithMessage("BatchId is required");
+            RuleFor(v => v.RollNumbers)
+                .NotEmpty().WithMessage("At least one roll number is required.");
 
+            RuleFor(v => v.BatchId)
+                .NotEmpty().WithMessage("Batch ID is required.")
+                .GreaterThan(0).WithMessage("Batch ID must be greater than 0.");
         }
     }
 }

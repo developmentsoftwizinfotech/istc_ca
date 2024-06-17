@@ -90,12 +90,13 @@ namespace ISTCOSA.Infrastructure.Handlers.UserProfileHandler
                     CityId = request.CityId,
                     Images = imagePath,
                 };
-
                 var result = await _userManager.CreateAsync(userProfile, request.Password);
                 if (!result.Succeeded)
                 {
-                    throw new Exception("User registration failed.");
+                    var errors = string.Join("; ", result.Errors.Select(e => e.Description));
+                    throw new Exception($"User could not be created. Errors: {errors}");
                 }
+
                 var roleExists = await _roleManager.RoleExistsAsync("Student");
                 if (!roleExists)
                 {

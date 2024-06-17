@@ -12,7 +12,9 @@ namespace ISTCOSA.Application.CommandAndQuries.Profession.Validation
     {
         public CreateUserProfessionCommandValidator()
         {
-            RuleFor(v => v.Name).NotEmpty().WithMessage("Profession name is required");
+            RuleFor(v => v.Name)
+                .NotEmpty().WithMessage("Profession name is required.")
+                .MaximumLength(50).WithMessage("Profession name must not exceed 50 characters.");
         }
     }
 }

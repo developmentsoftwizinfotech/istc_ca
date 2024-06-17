@@ -6,13 +6,13 @@ namespace ISTCOSA.Application.Common.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<CompanyDTO,Domain.Entities.Company>().ReverseMap();
-            CreateMap<ProfessionDTO,Domain.Entities.Profession>().ReverseMap();
-            CreateMap<IndustryDTO, Domain.Entities.Industry>().ReverseMap();
-            CreateMap<ProfessionDTO, Domain.Entities.Profession>().ReverseMap();
+            CreateMap<CompanyDTO,Company>().ReverseMap();
+            CreateMap<ProfessionDTO,Profession>().ReverseMap();
+            CreateMap<IndustryDTO,Industry>().ReverseMap();
+            CreateMap<ProfessionDTO,Profession>().ReverseMap();
 
-            CreateMap<UserRegisterDTOs, Domain.Entities.UserRegister>();
-            CreateMap<Domain.Entities.UserRegister, UserRegisterDTOs>()
+            CreateMap<UserRegisterDTOs, UserRegister>();
+            CreateMap<UserRegister, UserRegisterDTOs>()
                 .ForMember(dest => dest.CityId, opt => opt.MapFrom(src => src.CityId))
                 .ForMember(dest => dest.BatchId, opt => opt.MapFrom(src => src.RollNumber.Batch.BatchId))
                 .ForMember(dest => dest.BatchNumber, opt => opt.MapFrom(src => src.RollNumber.Batch.BatchNumber))
@@ -26,7 +26,24 @@ namespace ISTCOSA.Application.Common.Mapping
             CreateMap<UserPersonalDTO, UserPersonalInformation>();
             CreateMap<UserPersonalInformation, UserPersonalDTO>()
            .ForMember(dest => dest.LastLoginDate, opt => opt.MapFrom(src => src.User.LastLoginDate))
-           .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName));
+           .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName))
+           .ForMember(dest => dest.UserFullName, opt => opt.MapFrom(src => src.User.FullName))
+                .ForMember(dest => dest.UserBatchId, opt => opt.MapFrom(src => src.User.RollNumber.Batch.BatchId))
+                .ForMember(dest => dest.UserBatchNumber, opt => opt.MapFrom(src => src.User.RollNumber.Batch.BatchNumber))
+                .ForMember(dest => dest.UserRollNumberId, opt => opt.MapFrom(src => src.User.RollNumberId))
+                .ForMember(dest => dest.UserRollNumbers, opt => opt.MapFrom(src => src.User.RollNumber.RollNumbers))
+                .ForMember(dest => dest.UserCityName, opt => opt.MapFrom(src => src.User.city.Name))
+                .ForMember(dest => dest.UserStateId, opt => opt.MapFrom(src => src.User.city.StateId))
+                .ForMember(dest => dest.UserStateName, opt => opt.MapFrom(src => src.User.city.State.Name))
+                .ForMember(dest => dest.UserCountryId, opt => opt.MapFrom(src => src.User.city.State.CountryId))
+                .ForMember(dest => dest.UserCountryName, opt => opt.MapFrom(src => src.User.city.State.Country.Name))
+                .ForMember(dest => dest.UserGender, opt => opt.MapFrom(src => src.User.Gender))
+                .ForMember(dest => dest.UserDateOfBirth, opt => opt.MapFrom(src => src.User.DateOfBirth))
+                .ForMember(dest => dest.UserPinCode, opt => opt.MapFrom(src => src.User.PinCode))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.User.Id))
+                .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.User.Images))
+                .ForMember(dest => dest.UserPhoneNumber, opt => opt.MapFrom(src => src.User.PhoneNumber));
+
             CreateMap<PostEmploymentDTO,PostEmployment>();
             CreateMap<PostEmployment, PostEmploymentDTO>()
                 .ForMember(dest => dest.CompanyId, opt => opt.MapFrom(src => src.Company.Id))

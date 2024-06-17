@@ -23,7 +23,6 @@ namespace ISTCOSA.Infrastructure.Handlers.UserPersonalHandler
             {
                 try
                 {
-                    
                     var userPersonal = new UserPersonalInformation()
                     {
                         UserId = request.UserId,
@@ -43,7 +42,6 @@ namespace ISTCOSA.Infrastructure.Handlers.UserPersonalHandler
                         IsActive = true,
                     };
 
-                    await _context.AddAsync(userPersonal);
                     var profession = await _context.professions.FirstOrDefaultAsync(x => x.Id == request.ProfessionId);
                     if (profession == null) throw new Exception("Profession not Found");
 
@@ -61,14 +59,15 @@ namespace ISTCOSA.Infrastructure.Handlers.UserPersonalHandler
                         };
 
                         await _context.AddAsync(student);
+                        await _context.SaveChangesAsync(); 
+                        userPersonal.UserStudentId = student.Id;
                     }
-                    else if (profession.Name == "Private Sector" || profession.Name == "Self Employed" || profession.Name == "Entrepreneur / Own Business")
+                    else if (profession.Name == "Private Sector" || profession.Name == "Self Employed" || profession.Name == "Entrepreneur / Own Business"|| profession.Name == "Government Sector")
                     {
                         Company company = null;
 
                         if (request.CompanyId > 0)
                         {
-                            
                             company = await _context.companies.FindAsync(request.CompanyId);
                         }
                         else if (!string.IsNullOrEmpty(request.CompanyName))
@@ -82,10 +81,9 @@ namespace ISTCOSA.Infrastructure.Handlers.UserPersonalHandler
                                     Address = request.CompanyAddress,
                                     EmailAddress = request.CompanyEmailAddress,
                                     PhoneNumber = request.CompanyPhoneNumber,
-                                    CityId=request.CityId,
+                                    CityId = request.CityId,
                                     CreatedDate = DateTime.Now,
                                     IsActive = true,
-                                   
                                 };
                                 await _context.AddAsync(company);
                                 await _context.SaveChangesAsync(); 
@@ -98,18 +96,21 @@ namespace ISTCOSA.Infrastructure.Handlers.UserPersonalHandler
                             Designation = request.Designation,
                             ContactNumber = request.ContactNumber,
                             EmailID = request.EmailID,
-                            FromDate= request.FromDate,
-                            ToDate= request.ToDate,
-                            CompanyId = company.Id, 
-                            ProfessionId= request.ProfessionId,
+                            FromDate = request.FromDate,
+                            ToDate = request.ToDate,
+                            CompanyId = company.Id,
+                            ProfessionId = request.ProfessionId,
                             CreatedDate = DateTime.Now,
                             IsActive = true,
                         };
 
                         await _context.AddAsync(userWork);
-                    }
+                        await _context.SaveChangesAsync(); 
+                        userPersonal.UserWorkId = userWork.Id;
 
-                    await _context.SaveChangesAsync();
+                    }
+                    await _context.AddAsync(userPersonal);
+                    await _context.SaveChangesAsync(); 
                     await transaction.CommitAsync();
                     var result = _mapper.Map<UserPersonalDTO>(userPersonal);
                     return result;

@@ -38,7 +38,7 @@ namespace ISTCOSA.Application.Common
             {
                 Title = "Validation Errors",
                 Status = context.Response.StatusCode,
-                Errors = exception.Errors
+                Error = exception.Errors
             };
 
             return context.Response.WriteAsync(JsonConvert.SerializeObject(response));
