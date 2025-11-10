@@ -1,1 +1,42 @@
+name: Deploy to Lightsail Windows
 
+on:
+  push:
+    branches:
+      - main   # change if you want a different branch
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted   # IMPORTANT: this runs on your Lightsail VM
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 
+
+      - name: Publish Web API 
+        run: dotnet publish ./EP.API/EP.API.csproj -c Release -o ./publish  
+
+      - name: Stop application pool
+        shell: powershell
+        run: |
+          Import-Module WebAdministration
+          $appPool = "elevate-performance"    
+          Write-Host "Stopping App Pool: $appPool..."
+          Stop-WebAppPool -Name $appPool
+          Write-Host "App Pool stopped."
+    
+      - name: Copy files to IIS site
+        shell: powershell
+        run: |
+          robocopy .\publish C:\elevate-performance-api\ *.* /S /E /DCOPY:DA /COPY:DAT /R:1000000 /W:30 /XF appsettings.json web.config
+          $exitCode = $LASTEXITCODE
+          Write-Host "Robocopy exit code: $exitCode"
+          if ($exitCode -ge 8) { exit $exitCode } else { exit 0 }
+
+      - name: Start application pool
+        shell: powershell
+        run: |
+          Import-Module WebAdministration
+          $appPool = "elevate-performance"    
+          Write-Host "Starting App Pool: $appPool..."
+          Start-WebAppPool -Name $appPool
+          Write-Host "App Pool started."
