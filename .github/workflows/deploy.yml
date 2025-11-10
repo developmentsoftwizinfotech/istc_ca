@@ -3,7 +3,7 @@ name: Deploy to Lightsail Windows
 on:
   push:
     branches:
-      - main   # change if you want a different branch
+      - master   # change if you want a different branch
 
 jobs:
   build-and-deploy:
