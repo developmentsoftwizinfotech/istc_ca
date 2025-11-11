@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted   # IMPORTANT: this runs on your Lightsail VM
     steps:
       - name: Checkout code 
-        uses: actions/checkout@v4    
+        uses: actions/checkout@v4     
 
       - name: Publish Web API 
         run: dotnet publish ./ISTCOSA/ISTCOSA.csproj -c Release -o ./publish    
