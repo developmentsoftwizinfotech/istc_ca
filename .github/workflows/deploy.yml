@@ -15,7 +15,7 @@ jobs:
       - name: Publish Web API 
         run: dotnet publish ./ISTCOSA/ISTCOSA.csproj -c Release -o ./publish    
 
-      - name: Stop IIS App Pool
+      - name: Stop IIS App Pool 
         shell: powershell
         run: |
          Import-Module WebAdministration
