@@ -17,10 +17,8 @@ jobs:
 
       - name: Stop IIS Website
         shell: powershell
-        run: |
-          $siteName = "elevate-performance"
-          Write-Host "Stopping IIS Website: $siteName..."
-          & "C:\Windows\System32\inetsrv\appcmd.exe" stop site "$siteName"         
+        run: |          
+          & "C:\Windows\System32\inetsrv\appcmd.exe" stop site "elevate-performance"         
           Write-Host "Website stopped successfully."
           
     
@@ -35,8 +33,6 @@ jobs:
       - name: Start IIS Website
         shell: powershell
         run: |
-          $siteName = "elevate-performance"
-          Write-Host "Starting IIS Website: $siteName..."
-          & "C:\Windows\System32\inetsrv\appcmd.exe" start site "$siteName"           
+          & "C:\Windows\System32\inetsrv\appcmd.exe" start site "elevate-performance"           
           Write-Host "Website started successfully."
           
