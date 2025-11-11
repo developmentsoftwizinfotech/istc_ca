@@ -15,11 +15,16 @@ jobs:
       - name: Publish Web API 
         run: dotnet publish ./ISTCOSA/ISTCOSA.csproj -c Release -o ./publish   
 
-      - name: Stop IIS Website
+      - name: Stop IIS App Pool
         shell: powershell
-        run: |          
-          & "C:\Windows\System32\inetsrv\appcmd.exe" stop site "elevate-performance"         
-          Write-Host "Website stopped successfully."
+        run: |
+         Import-Module WebAdministration
+         $appPool = "Elevate-Performance"
+         Write-Host "Stopping App Pool: $appPool..."
+         Stop-WebAppPool -Name $appPool
+         Start-Sleep -Seconds 5
+         Write-Host "App Pool stopped successfully."
+
           
     
       - name: Copy files to IIS site
@@ -30,9 +35,13 @@ jobs:
           Write-Host "Robocopy exit code: $exitCode"
           if ($exitCode -ge 8) { exit $exitCode } else { exit 0 }
           
-      - name: Start IIS Website
+      - name: Start IIS App Pool
         shell: powershell
         run: |
-          & "C:\Windows\System32\inetsrv\appcmd.exe" start site "elevate-performance"           
-          Write-Host "Website started successfully."
+         Import-Module WebAdministration
+         $appPool = "Elevate-Performance"
+         Write-Host "Starting App Pool: $appPool..."
+         Start-WebAppPool -Name $appPool
+         Write-Host "App Pool started successfully."
+
           
