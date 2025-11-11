@@ -1,4 +1,3 @@
-
 name: Deploy to Lightsail Windows
 
 on:
@@ -16,41 +15,17 @@ jobs:
       - name: Publish Web API 
         run: dotnet publish ./ISTCOSA/ISTCOSA.csproj -c Release -o ./publish   
 
-      - name: show runner identity and IIS
+      - name: Stop IIS Website
         shell: powershell
         run: |
-         Write-Host "== whoami =="
-         whoami
-         Write-Host "== whoami privileges =="
-         whoami /priv
-         Write-Host "== PowerShell bitness =="
-         if ([Environment]::Is64BitProcess) { Write-Host "64-bit process" } else { Write-Host "32-bit process" }
-         Write-Host "== appcmd paths =="
-         Write-Host "System32 path: $env:windir\system32\inetsrv\appcmd.exe"
-         Write-Host "Sysnative path: $env:windir\Sysnative\inetsrv\appcmd.exe"
-         Write-Host "== appcmd version (System32) =="
-         if (Test-Path "$env:windir\system32\inetsrv\appcmd.exe") { & "$env:windir\system32\inetsrv\appcmd.exe" list site } else { Write-Host "System32 appcmd not found or redirected." }
-         Write-Host "== appcmd version (Sysnative) =="
-         if (Test-Path "$env:windir\Sysnative\inetsrv\appcmd.exe") { & "$env:windir\Sysnative\inetsrv\appcmd.exe" list site } else { Write-Host "Sysnative appcmd not found." }
-         Write-Host "== PowerShell IIS provider sites =="
-         Import-Module WebAdministration -ErrorAction SilentlyContinue
-         Get-ChildItem IIS:\Sites | Select-Object Name, State, PhysicalPath
-
-      - name: Stop IIS Website (robust)
-        shell: powershell
-        run: |
-         $siteName = "elevate-performance"
-         Write-Host "Stopping IIS Website: $siteName..."
-         $appcmdSysnative = "$env:windir\Sysnative\inetsrv\appcmd.exe"
-         if (Test-Path $appcmdSysnative) {
-         & $appcmdSysnative stop site /site.name:"$siteName"
-         $rc = $LASTEXITCODE
-         Write-Host "appcmd exit code: $rc"
-         if ($rc -ne 0) { Write-Host "appcmd could not stop site (code $rc). Continue to copy files if you want to proceed." }
-         } else {
-          Write-Host "Sysnative appcmd not found; trying system32 path..."
-         & "$env:windir\system32\inetsrv\appcmd.exe" stop site /site.name:"$siteName"
-         }
+          $siteName = "C:\inetpub\wwwroot\elevate-performance"
+          Write-Host "Stopping IIS Website: $siteName..."
+          & "C:\Windows\System32\inetsrv\appcmd.exe" stop site /site.name:"$siteName"
+          if ($LASTEXITCODE -ne 0) { 
+            Write-Host "⚠️ Warning: Failed to stop IIS site. It may already be stopped." 
+          } else {
+            Write-Host "Website stopped successfully."
+          }
     
       - name: Copy files to IIS site
         shell: powershell
@@ -59,11 +34,11 @@ jobs:
           $exitCode = $LASTEXITCODE
           Write-Host "Robocopy exit code: $exitCode"
           if ($exitCode -ge 8) { exit $exitCode } else { exit 0 }
-
+          
       - name: Start IIS Website
         shell: powershell
         run: |
-          $siteName = "elevate-performance"
+          $siteName = "C:\inetpub\wwwroot\elevate-performance"
           Write-Host "Starting IIS Website: $siteName..."
           & "C:\Windows\System32\inetsrv\appcmd.exe" start site /site.name:"$siteName"
           if ($LASTEXITCODE -ne 0) {
