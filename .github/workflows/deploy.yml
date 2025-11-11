@@ -19,7 +19,7 @@ jobs:
         shell: powershell
         run: |
           Import-Module WebAdministration
-          $appPool = "Elevate-Performance"    
+          $appPool = "elevate-performance"    
           Write-Host "Stopping App Pool: $appPool..."
           Stop-WebAppPool -Name $appPool
           Write-Host "App Pool stopped."
@@ -36,7 +36,7 @@ jobs:
         shell: powershell
         run: |
           Import-Module WebAdministration
-          $appPool = "Elevate-Performance"    
+          $appPool = "elevate-performance"    
           Write-Host "Starting App Pool: $appPool..."
           Start-WebAppPool -Name $appPool
           Write-Host "App Pool started."
