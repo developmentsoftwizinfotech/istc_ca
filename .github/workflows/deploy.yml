@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4  
 
       - name: Publish Web API 
-        run: dotnet publish ./EP.API/EP.API.csproj -c Release -o ./publish  
+        run: dotnet publish ./ISTCOSA/ISTCOSA.API.csproj -c Release -o ./publish  
 
       - name: Stop application pool
         shell: powershell
