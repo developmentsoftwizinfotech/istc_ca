@@ -1,3 +1,4 @@
+
 name: Deploy to Lightsail Windows
 
 on:
@@ -18,9 +19,11 @@ jobs:
       - name: Stop application pool
         shell: powershell
         run: |
-         Write-Host "Stopping App Pool..."
-         & "C:\Windows\System32\inetsrv\appcmd.exe" stop apppool /apppool.name:"elevate-performance"
-         Write-Host "App Pool stopped."
+          Import-Module WebAdministration
+          $appPool = "elevate-performance"    
+          Write-Host "Stopping App Pool: $appPool..."
+          Stop-WebAppPool -Name $appPool
+          Write-Host "App Pool stopped."
     
       - name: Copy files to IIS site
         shell: powershell
@@ -33,6 +36,8 @@ jobs:
       - name: Start application pool
         shell: powershell
         run: |
-         Write-Host "Starting App Pool..."
-         & "C:\Windows\System32\inetsrv\appcmd.exe" start apppool /apppool.name:"elevate-performance"
-         Write-Host "App Pool started."
+          Import-Module WebAdministration
+          $appPool = "elevate-performance"    
+          Write-Host "Starting App Pool: $appPool..."
+          Start-WebAppPool -Name $appPool
+          Write-Host "App Pool started."
