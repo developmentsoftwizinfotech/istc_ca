@@ -21,8 +21,12 @@ jobs:
         run: |
           $siteName = "elevate-performance"
           Write-Host "Stopping IIS Website: $siteName..."
-          & "C:\Windows\System32\inetsrv\appcmd.exe" stop site /site.name:$siteName
-          Write-Host "Website stopped."
+          & "C:\Windows\System32\inetsrv\appcmd.exe" stop site /site.name:"$siteName"
+          if ($LASTEXITCODE -ne 0) { 
+            Write-Host "⚠️ Warning: Failed to stop IIS site. It may already be stopped." 
+          } else {
+            Write-Host "Website stopped successfully."
+          }
     
       - name: Copy files to IIS site
         shell: powershell
@@ -37,5 +41,10 @@ jobs:
         run: |
           $siteName = "elevate-performance"
           Write-Host "Starting IIS Website: $siteName..."
-          & "C:\Windows\System32\inetsrv\appcmd.exe" start site /site.name:$siteName
-          Write-Host "Website started."
+          & "C:\Windows\System32\inetsrv\appcmd.exe" start site /site.name:"$siteName"
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "⚠️ Warning: Failed to start IIS site. Please check manually."
+            exit $LASTEXITCODE
+          } else {
+            Write-Host "Website started successfully."
+          }
