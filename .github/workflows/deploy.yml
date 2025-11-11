@@ -9,7 +9,7 @@ jobs:
   build-and-deploy:
     runs-on: self-hosted   # IMPORTANT: this runs on your Lightsail VM
     steps:
-      - name: Checkout code
+      - name: Checkout code 
         uses: actions/checkout@v4 
 
       - name: Publish Web API 
