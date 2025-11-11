@@ -30,7 +30,7 @@ jobs:
       - name: Copy files to IIS site
         shell: powershell
         run: |
-          robocopy .\publish C:\elevate-performance-api\ *.* /S /E /DCOPY:DA /COPY:DAT /R:1000000 /W:30 /XF appsettings.json web.config
+          robocopy .\publish C:\istcosa\
           $exitCode = $LASTEXITCODE
           Write-Host "Robocopy exit code: $exitCode"
           if ($exitCode -ge 8) { exit $exitCode } else { exit 0 }
